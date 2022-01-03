@@ -1,0 +1,29 @@
+To enable a device me must
+  Set the NIC to the proper IP Address
+  Forward the proper ports to the WSL2 IP  
+  Open the firewall
+  
+
+netsh interface portproxy add v
+
+netsh interface portproxy show all
+
+
+$wslip = (wsl hostname -I).trim()
+
+Write-Host "WSL Machine IP: ""$wsl_ip"""
+
+netsh interface portproxy reset all
+netsh interface portproxy add v4tov4 listenaddress=192.192.192.205 listenport=2000 connectaddress=$wsl_ip  connectport=2000
+netsh interface portproxy add v4tov4 listenaddress=192.192.192.205 listenport=30704 connectaddress=$wsl_ip  connectport=30704
+netsh interface portproxy show all
+
+
+PC:         192.192.192.200
+Switchboard 201
+Cold Tray:  202
+FridgeTemp  203
+Hot Tray    204
+Oven Temp   205
+
+

@@ -11,9 +11,11 @@ $application = new Application();
 // ... register commands
 
 $application->add(new App\Command\ColdTray());
+$application->add(new App\Command\HotTray());
+$application->add(new App\Command\Switchboard());
+$application->add(new App\Command\OvenTemp());
 
-$x= new App\Stuff;
-
+$application->add(new App\Command\PaymentServer());
 
 
 $application->run();
